@@ -1,8 +1,6 @@
 #!/bin/bash
-
 RED="\033[1;31m"
 RESET="\033[0m"
-
 echo '      ___                       ___           ___           ___           ___     
      /\__\          ___        |\__\         /\  \         /\  \         /\__\    
     /::|  |        /\  \       |:|  |       /::\  \       /::\  \       /::|  |   
@@ -14,65 +12,36 @@ echo '      ___                       ___           ___           ___           
      |::/  /    \:\__\        |:|  |       \:\  \           /:/  /       |::/  /  
      /:/  /      \/__/        |:|  |        \:\__\         /:/  /        /:/  /   
      \/__/                     \|__|         \/__/         \/__/         \/__/    '
-
 echo
 echo
-
 mkdir ./NixCan
-
 echo
-
 echo -e "${RED}Starting Linpeas Download...${RESET}"
-
 echo
-
 wget -q https://github.com/carlospolop/PEASS-ng/releases/download/20220131/linpeas.sh
-
 echo
-
 echo -e "${RED}Making it executable...${RESET}"
-
 echo
-
 chmod +x linpeas.sh
-
 echo
-
 echo -e "${RED}Done with chmod...${RESET}"
-
 echo
-
 echo -e "${RED}Executing the binary...${RESET}"
-
 echo
-
 bash linpeas.sh > ./NixCan/lpresults 2>&1
-
 echo
-
 echo -e "${RED}Sorting through all of the refuse so you don't have to...${RESET}"
-
 echo
-
 echo -e "The line numbers are listed above each critical result from your scan. \n \n \n" > ./NixCan/output 
-
 echo
-
 for i in $(cat -v ./NixCan/lpresults | grep -n "1;31;103" | grep -o '^[^:]*' | xargs)
 do
        echo $i >> ./NixCan/output
-
 	head -n $i ./NixCan/lpresults | tail -n 1 >> ./NixCan/output
 done
-
 echo
-
 echo -e "${RED}Cleaning up your environment...${RESET}"
-
 echo
-
 rm -rf ./linpeas.sh
-
 echo
-
 echo -e "${RED}Enjoy the rest of your day that we just gave back to you!${RESET}"
