@@ -1,0 +1,2 @@
+# NixCan
+Linpeas optimization tool
