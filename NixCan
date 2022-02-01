@@ -47,5 +47,3 @@ done
 echo -e "${RED}Enjoy the rest of your day that we just gave back to you!${RESET}"
 ​
 exit 
-
-exit again
