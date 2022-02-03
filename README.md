@@ -9,6 +9,4 @@ NixCan helps consolidate the Linpeas scan results so you see the most critical v
 
 ```git clone https://github.com/ZikNik/NixCan.git```
 
-```chmod +x nixcan```
-
 ```./nixcan```
